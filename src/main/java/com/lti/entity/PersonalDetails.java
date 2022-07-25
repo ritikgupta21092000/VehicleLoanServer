@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -31,6 +32,17 @@ public class PersonalDetails {
 	
 	@OneToOne(mappedBy = "personalDetails", cascade = CascadeType.ALL)
 	Document document;
+	
+	@OneToMany(mappedBy = "sales",cascade = CascadeType.ALL)
+	Sales sales;
+	
+	public Sales getSales() {
+		return sales;
+	}
+
+	public void setSales(Sales sales) {
+		this.sales = sales;
+	}
 
 	public Document getDocument() {
 		return document;
